@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Age Calculator</title>
+	<link rel="stylesheet" type="text/css" href="page1.css" />
+  </head>
+  <body>
+    <h1>Age Calculator</h1>
+    <form>
+      <label for="date-input">Date of Birth:</label>
+      <input type="text" id="date-input" placeholder="DD">
+      <br>
+      <label for="month-input">Month of Birth:</label>
+      <input type="text" id="month-input" placeholder="MM">
+      <br>
+      <label for="year-input">Year of Birth:</label>
+      <input type="text" id="year-input" placeholder="YYYY">
+      <br><br>
+      <button type="button" id="calculate-btn">Calculate Age</button>
+    </form>
+    <script>
+      // Get the input boxes for date, month, and year of birth
+const dateInput = document.getElementById("date-input");
+const monthInput = document.getElementById("month-input");
+const yearInput = document.getElementById("year-input");
+
+// Get the button to calculate the age
+const calculateBtn = document.getElementById("calculate-btn");
+
+// Add a click event listener to the button
+calculateBtn.addEventListener("click", function() {
+  // Get the values entered in the input boxes
+  const date = dateInput.value;
+  const month = monthInput.value;
+  const year = yearInput.value;
+
+  // Create a new Date object with the entered birthdate
+  const birthdate = new Date(year, month - 1, date);
+
+  // Get the current date
+  const currentDate = new Date();
+
+  // Calculate the age in milliseconds
+  const ageInMilliseconds = currentDate - birthdate;
+
+  // Convert the age to years
+  const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365);
+
+  // Round the age to a whole number
+  const age = Math.floor(ageInYears);
+
+  // Display the age
+  alert(`Your age is ${age} years.`);
+});
+
+    </script>
+  </body>
+</html>
